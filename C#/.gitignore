@@ -1,0 +1,51 @@
+# --- Build artifacts ---
+**/bin/
+**/obj/
+**/out/
+
+# --- User-specific files ---
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Logs and diagnostics ---
+*.log
+TestResults/
+*.coverage
+*.coveragexml
+
+# --- ASP.NET & Node ---
+wwwroot/node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Secrets and certs ---
+secrets.json
+*.pfx
+*.key
+*.cer
+
+# --- NuGet & dependency caches ---
+packages/
+.nuget/
+
+# --- Central package management files (auto-generated) ---
+Directory.Packages.props.nuget.targets
+Directory.Packages.props.nuget.dgspec.json
+
+# --- VS & OS clutter ---
+*.vs/
+*.DS_Store
+Thumbs.db
+
+# --- Optional: local config overrides ---
+appsettings.Development.json
+appsettings.Local.json
