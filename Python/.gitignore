@@ -1,0 +1,58 @@
+# 🐍 Python-related
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+*.log
+
+# 🔀 Environment + package management
+scraper-env/
+.env
+.venv/
+env/
+venv/
+Pipfile.lock
+poetry.lock
+
+# 🔧 IDE/editor-specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 📦 Build/output artifacts
+dist/
+build/
+*.spec
+*.manifest
+
+# 📄 System-generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# 📓 Jupyter Notebooks
+.ipynb_checkpoints/
+
+# 📁 Cached data or tools
+.cache/
+.mypy_cache/
+pytest_cache/
+coverage.xml
+htmlcov/
+.tox/
+.pytest_cache/
+*.cover
+*.coverage
+
+# 🔐 Sensitive info
+*.pem
+*.key
+*.crt
+secrets.json
+config.yaml
+credentials.json
