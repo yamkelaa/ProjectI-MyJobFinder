@@ -1,3 +1,4 @@
+using Infrastructure;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+builder.Services.AddDbContext<AppDbContext>(options => options.useSqlSeriver());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
