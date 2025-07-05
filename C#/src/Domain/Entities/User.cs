@@ -13,4 +13,6 @@ public class User
     [Required]
     [EnumDataType(typeof(Role))]
     public required Role Role { get; set; }
+    public ICollection<TargetEmailAddress>? EmailAddresses { get; set; }
+    public ICollection <TargetWebsite>? Websites { get; set; }
 }

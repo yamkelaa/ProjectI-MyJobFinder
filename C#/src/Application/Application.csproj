@@ -10,4 +10,8 @@
     <Folder Include="DependencyInjection\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" />
+  </ItemGroup>
+
 </Project>
