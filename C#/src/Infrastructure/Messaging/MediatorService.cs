@@ -1,12 +1,12 @@
 ﻿using Application.Interfaces.Command;
 using Application.Interfaces.Mediator;
-using Application.Interfaces.Pipleline;
+using Application.Interfaces.Pipeline;
 using Application.Interfaces.Query;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Mediator;
 
-public class Mediator(IServiceProvider provider) : IMediator
+public class MediatorService(IServiceProvider provider) : IMediatorService
 {
         public async Task<TResult> SendCommandAsync<TCommand, TResult>(TCommand command, CancellationToken cancellationToken = default) where TCommand : ICommand<TResult>
         {

@@ -13,5 +13,6 @@ public class SentEmail
     public int TargetEmailAddressId { get; set; }
     [Required]
     public bool IsEmailSent { get; set; }
+    [Required]
     public DateTime SentDate { get; set; }
 }

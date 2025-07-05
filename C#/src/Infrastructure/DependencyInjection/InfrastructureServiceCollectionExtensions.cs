@@ -1,4 +1,6 @@
-﻿using Infrastructure.Persistence;
+﻿using Application.Interfaces.Mediator;
+using Infrastructure.Mediator;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +19,9 @@ public static class InfrastructureServiceCollectionExtensions
     {
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        services.AddSingleton<IMediatorService, MediatorService>();
         return services;
+        
 
     }
 }

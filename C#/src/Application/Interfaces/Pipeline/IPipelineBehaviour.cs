@@ -1,4 +1,4 @@
-﻿namespace Application.Interfaces.Pipleline;
+﻿namespace Application.Interfaces.Pipeline;
 
 public interface IPipelineBehaviour<in TInput, TOutput>
 {
