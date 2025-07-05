@@ -7,7 +7,7 @@ public class TargetWebsite
 {
     [Key]
     public int TargetWebsitedId { get; set; }
-    [ForeignKey("User")]
+    [ForeignKey("UserId")]
     public int UserId { get; set; }
     [Required]
     [Url]

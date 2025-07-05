@@ -7,7 +7,7 @@ public class TargetEmailAddress
 {
     [Key]
     public int TargetEmailId { get; set; }
-    [ForeignKey("User")]
+    [ForeignKey("UserId")]
     public int UserId { get; set; }
     [Required]
     [EmailAddress]

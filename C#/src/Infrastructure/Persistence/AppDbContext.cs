@@ -8,10 +8,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<User> Users { get; set; }
     public DbSet<TargetEmailAddress> TargetEmailAddresses { get; set; }
     public DbSet<TargetWebsite> TargetWebsites { get; set; }
+    public DbSet<SentEmail> SentEmails { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().Property(u => u.Role)
           .HasConversion<string>();
+        
     }
 }
