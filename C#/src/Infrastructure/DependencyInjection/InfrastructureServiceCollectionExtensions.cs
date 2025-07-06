@@ -1,5 +1,8 @@
-﻿using Application.Interfaces.Mediator;
+﻿using Application.Interfaces.ExceptionProcessor;
+using Application.Interfaces.Mediator;
+using Infrastructure.Exceptions;
 using Infrastructure.Mediator;
+using Infrastructure.Middleware;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +22,13 @@ public static class InfrastructureServiceCollectionExtensions
     {
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-        services.AddSingleton<IMediatorService, MediatorService>();
-        return services;
-        
 
+        services.AddSingleton<IMediatorService, MediatorService>();
+        services.AddSingleton<IExceptionProcessor, ExceptionProcessor>();
+
+        services.AddTransient<ErrorHandlingMiddleware>();
+        services.AddTransient<LoggingMiddleware>();
+        services.AddTransient<AuthenticationMiddleware>();
+        return services;
     }
 }
