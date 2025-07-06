@@ -1,6 +1,5 @@
-using Infrastructure;
 using Infrastructure.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+using Infrastructure.Middleware;
 using Scalar.AspNetCore;
 
 
@@ -21,8 +20,10 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseMiddleware<LoggingMiddleware>();
+app.UseMiddleware<AuthenticationMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
-
 
 
 app.MapGet("/", ()=> "Hello World")
