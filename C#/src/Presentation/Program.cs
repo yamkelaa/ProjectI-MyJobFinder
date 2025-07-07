@@ -26,7 +26,7 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 
-app.MapGet("/", ()=> "Hello World")
+app.MapGet("/", () => "Hello World")
     .Produces(200, typeof(string));
 
 app.Run();
