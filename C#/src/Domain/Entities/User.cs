@@ -9,7 +9,7 @@ public class User
     public int UserId { get; set; }
     [Required]
     [StringLength(36, MinimumLength =36)]
-    public int EntraUserId { get; set; }
+    public required string EntraUserId { get; set; }
     [Required]
     [EnumDataType(typeof(Role))]
     public required Role Role { get; set; }
