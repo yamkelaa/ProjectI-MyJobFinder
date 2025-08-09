@@ -1,35 +1,57 @@
 ﻿using Application.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
-namespace Infrastructure.Repositories;
-
-public class Repository<T>(DbContext dbContext) : IRepository<T> where T : class
+namespace Infrastructure.Repositories
 {
-    private readonly DbContext _dbContext = dbContext;
-    protected DbSet<T> Entities => _dbContext.Set<T>();
-
-    public Task<T> CreateAsync(T entity)
+    public class Repository<T> : IRepository<T> where T : class
     {
-        throw new NotImplementedException();
-    }
+        private readonly DbContext _dbContext;
+        private readonly DbSet<T> _dbSet;
 
-    public Task<T?> DeleteAsync(object id)
-    {
-        throw new NotImplementedException();
-    }
+        public Repository(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<T>();
+        }
 
-    public Task<T> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
+        public async Task<T> CreateAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
 
-    public Task<T?> GetAsync()
-    {
-        throw new NotImplementedException();
-    }
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await _dbSet.FindAsync(id);
+            if (entity != null)
+            {
+                _dbSet.Remove(entity);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
 
-    public Task<T> UpdateAsync(T entity)
-    {
-        throw new NotImplementedException();
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.Where(predicate).ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbSet.Attach(entity);
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }
