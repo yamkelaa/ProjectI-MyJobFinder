@@ -1,8 +1,14 @@
 //We setup the builder that will encompass service registration as well as various app setup
+using Microsoft.EntityFrameworkCore;
+using Tech_Store.NewFolder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TechStoreContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 

@@ -1,8 +1,27 @@
 ﻿@model Tech_Store.Models.Item
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    @model is a decorator - it has avrious properteis that can be accessed
 *@
 @{
     var items = new List<string> { "Item1", "Item2", "Item3" };
+    var isLoggedIn = true;
 }
 <p>This is the name of the item @Model.Name</p>
+<ul>
+    @foreach (var item in items) {
+        <li>item</li>
+    }
+</ul>
+
+@if (isLoggedIn)
+{
+    <p>The user is logged into this account</p>
+}
+
+<form asp-action="Submit">
+    <div>
+        <input asp-for="Name" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
