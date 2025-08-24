@@ -1,6 +1,6 @@
 //We setup the builder that will encompass service registration as well as various app setup
 using Microsoft.EntityFrameworkCore;
-using Tech_Store.NewFolder;
+using Tech_Store.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

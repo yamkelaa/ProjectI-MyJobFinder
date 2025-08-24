@@ -1,24 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Tech_Store.Data;
 using Tech_Store.Models;
 
-namespace Tech_Store.Controllers
-{
-    public class ItemsController : Controller
-    {
-        //IActionResult defines what the user can return
-        //It can be a viewresult that would return view without any arguments
-        //We counld return a content or json result
-        public IActionResult Overview()
-        {
-            var item = new Item() { Name = "Keyboard" };
-            return View(item);
-        }
+namespace Tech_Store.Controllers;
 
-        //Query strings are used to sort or filter data
-        //Its set in the program.cs therefore the name should be id otherwise use a query param 
-        public IActionResult Edit(int id)
-        {
-            return Content("id = " + id);
-        }
+public class ItemsController(TechStoreContext _context) : Controller
+{
+    public async Task<IActionResult> Index()
+    {
+        var item = await _context.Items.ToListAsync();
+        return View(item);
     }
 }
+

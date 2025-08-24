@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Tech_Store.Models;
 
@@ -10,6 +6,7 @@ public partial class Item
 {
     [Key]
     public int Id { get; set; }
-
-    public string Name { get; set; } = null!;
+    [Required]
+    public required string Name { get; set; }
+    public double Price { get; set; } 
 }

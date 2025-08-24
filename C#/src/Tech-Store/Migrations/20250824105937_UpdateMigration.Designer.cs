@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tech_Store.Data;
 
@@ -10,9 +11,11 @@ using Tech_Store.Data;
 namespace Tech_Store.Migrations
 {
     [DbContext(typeof(TechStoreContext))]
-    partial class TechStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20250824105937_UpdateMigration")]
+    partial class UpdateMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

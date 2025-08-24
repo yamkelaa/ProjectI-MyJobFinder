@@ -16,10 +16,6 @@ public partial class User
     [Unicode(false)]
     public string Surname { get; set; } = null!;
 
-    [StringLength(201)]
-    [Unicode(false)]
-    public string FullName { get; set; } = null!;
-
     [StringLength(50)]
     [Unicode(false)]
     public string Role { get; set; } = null!;
