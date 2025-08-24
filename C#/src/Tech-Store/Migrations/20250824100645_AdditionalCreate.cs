@@ -5,7 +5,7 @@
 namespace Tech_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalMigration : Migration
+    public partial class AdditionalCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

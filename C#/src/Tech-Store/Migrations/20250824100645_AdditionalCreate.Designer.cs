@@ -11,8 +11,8 @@ using Tech_Store.NewFolder;
 namespace Tech_Store.Migrations
 {
     [DbContext(typeof(TechStoreContext))]
-    [Migration("20250820052908_Inital Migration")]
-    partial class InitalMigration
+    [Migration("20250824100645_AdditionalCreate")]
+    partial class AdditionalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
